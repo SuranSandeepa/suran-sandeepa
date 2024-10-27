@@ -1,0 +1,25 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is named differently
+  workflow_dispatch:  # Allows manual trigger of the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          echo "No build step required for static site."
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Change if your files are in a subdirectory
